@@ -12,10 +12,60 @@
     body {
       font-family: 'Fredoka One', cursive;
       margin: 0;
-      overflow: hidden;
-      background-color: #f2f2f2;
+      overflow: hidden; /* Hide scrollbars */
     }
 
+    .background-container {
+      position: fixed; 
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2; /* Behind everything else */
+    }
+
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("https://static.wikia.nocookie.net/roblox/images/5/53/Mythical_Pink_Leaf.png/revision/latest/thumbnail/width/360/height/450?cb=20201001011104");
+      background-size: 150px; /* Adjust the size for tiling */
+      background-repeat: repeat;
+      animation: subtle-background-shift 20s linear infinite; /* Add subtle background animation */
+    }
+
+    @keyframes subtle-background-shift {
+      0% { background-position: 0 0; }
+      50% { background-position: 5px 5px; }
+      100% { background-position: 0 0; }
+    }
+
+    .falling-leaf {
+      position: absolute;
+      width: 50px; 
+      height: 50px;
+      background-image: url("https://static.wikia.nocookie.net/roblox/images/5/53/Mythical_Pink_Leaf.png/revision/latest/thumbnail/width/360/height/450?cb=20201001011104");
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: fall linear infinite;
+      opacity: 0; 
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0; 
+      }
+      5% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg); 
+        opacity: 0; 
+      }
+    }
     .section {
       height: 100vh;
       display: flex;
@@ -23,6 +73,7 @@
       align-items: center;
       text-align: center;
       position: relative;
+      z-index: 1; /* Sections above the background */
     }
 
     .profile {
@@ -42,7 +93,7 @@
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      z-index: 0; /* Keep content above leaves */
+      background-color: white;
     }
 
     .profile img {
@@ -77,6 +128,15 @@
       gap: 15px;
     }
 
+    /* ... (other CSS) ... */
+
+.created-by {
+  display: block;
+  font-size: 12px; /* Adjust font size as needed */
+  color: #666;      /* Make the text a bit lighter */
+  margin-top: 20px;  /* Add some spacing above the text */
+  text-align: center; /* Center the text */
+}
     .link-button {
       background-color: #f8d7da;
       color: #fff;
@@ -99,35 +159,6 @@
     .link-icon {
       font-size: 1.2em;
       margin-right: 8px;
-    }
-
-    /* Gingham Background Pattern */
-    .section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 200%;
-      background-image: 
-        linear-gradient(45deg, #f2d7dd 25%, transparent 25%, transparent 75%, #f2d7dd 75%),
-        linear-gradient(45deg, #f2d7dd 25%, transparent 25%, transparent 75%, #f2d7dd 75%);
-      background-size: 40px 40px;
-      background-position: 0 0, 20px 20px;
-      transform: scale(0.5);
-      transform-origin: 0 0;
-      z-index: -1; 
-    }
-
-    /* Falling Leaves Container */
-    .leaf-container { 
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none; 
     }
 
 /* Falling Leaf Styles */
@@ -158,9 +189,10 @@
   </style>
 </head>
 <body>
-
-  <div class="leaf-container" id="leaf-container"></div>
-
+    <div class="background-container">
+      <div class="background"></div>
+      <div class="leaf-container" id="leaf-container"></div>
+    </div>
   <div class="section profile" id="about-me">
     <div class="container">
       <img src="pfp.png" alt="roh">
@@ -192,18 +224,18 @@
         <a href="https://discord.com/users/1224388321464291410" class="link-button">
           <span class="link-icon">🔗</span>
           <span class="link-text">Discord</span> </a>
-        <a href="#projects" class="link-button">
+        <a href="https://vrchat.com/home/user/usr_d39dd942-ae96-4fe4-9a22-9b2f4b1d0279" class="link-button">
           <span class="link-icon">📷</span>
-          <span class="link-text">Projects</span>
+          <span class="link-text">VRChat</span>
         </a>
-        <a href="#socials" class="link-button">
-          <span class="link-icon">📷</span>
-          <span class="link-text">other socials here if you want</span>
-        </a>
+        <a href="https://x.com/XenoxDll" class="link-button">
+            <span class="link-icon">🐦</span>
+            <span class="link-text">X</span>
+          </a>
       </div>
+      <a href="https://coopr.tech" class="created-by">created by coopaah</a> <div class="leaf-container" id="leaf-container"></div>
     </div>
   </div>
-
   <script>
     // Falling Leaf JavaScript
     const leafContainer = document.getElementById('leaf-container');
@@ -266,5 +298,6 @@
       });
     }
   </script>
+
 </body>
 </html>
