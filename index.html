@@ -16,7 +16,7 @@
     }
 
     .background-container {
-      position: fixed; 
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -31,9 +31,9 @@
       width: 100%;
       height: 100%;
       background-image: url("https://static.wikia.nocookie.net/roblox/images/5/53/Mythical_Pink_Leaf.png/revision/latest/thumbnail/width/360/height/450?cb=20201001011104");
-      background-size: 150px; /* Adjust the size for tiling */
+      background-size: 150px; 
       background-repeat: repeat;
-      animation: subtle-background-shift 20s linear infinite; /* Add subtle background animation */
+      animation: subtle-background-shift 20s linear infinite; 
     }
 
     @keyframes subtle-background-shift {
@@ -44,28 +44,29 @@
 
     .falling-leaf {
       position: absolute;
-      width: 50px; 
+      width: 50px;
       height: 50px;
       background-image: url("https://static.wikia.nocookie.net/roblox/images/5/53/Mythical_Pink_Leaf.png/revision/latest/thumbnail/width/360/height/450?cb=20201001011104");
       background-size: contain;
       background-repeat: no-repeat;
       animation: fall linear infinite;
-      opacity: 0; 
+      opacity: 0;
     }
 
     @keyframes fall {
       0% {
         transform: translateY(-10vh) rotate(0deg);
-        opacity: 0; 
+        opacity: 0;
       }
       5% {
         opacity: 1;
       }
       100% {
-        transform: translateY(110vh) rotate(360deg); 
-        opacity: 0; 
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
       }
     }
+
     .section {
       height: 100vh;
       display: flex;
@@ -128,15 +129,6 @@
       gap: 15px;
     }
 
-    /* ... (other CSS) ... */
-
-.created-by {
-  display: block;
-  font-size: 12px; /* Adjust font size as needed */
-  color: #666;      /* Make the text a bit lighter */
-  margin-top: 20px;  /* Add some spacing above the text */
-  text-align: center; /* Center the text */
-}
     .link-button {
       background-color: #f8d7da;
       color: #fff;
@@ -161,38 +153,111 @@
       margin-right: 8px;
     }
 
-/* Falling Leaf Styles */
-.falling-leaf {
-    position: absolute;
-    width: 50px; /* Increased width */
-    height: 50px; /* Increased height */
-    background-image: url("https://static.wikia.nocookie.net/roblox/images/5/53/Mythical_Pink_Leaf.png/revision/latest/thumbnail/width/360/height/450?cb=20201001011104");
-    background-size: contain;
-    background-repeat: no-repeat;
-    animation: fall linear infinite;
-    opacity: 0;
-}
+    /* Discord Profile Styles */
+    .discord-profile {
+      text-align: left; 
+    }
 
-    @keyframes fall {
-      0% {
-        transform: translateY(-10vh) rotate(0deg);
-        opacity: 0; 
+    .banner-container {
+      position: relative;
+      width: 100%;
+      padding-top: 30%; 
+      overflow: hidden;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .banner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-info {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .user-details h2 {
+      margin: 0;
+      font-size: 1.5em;
+    }
+
+    .user-details .bio {
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    /* ... (other CSS) ... */
+
+    .created-by {
+      display: block;
+      font-size: 12px; 
+      color: #666;     
+      margin-top: 20px; 
+      text-align: center; 
+    }
+
+    /* Scroll Arrow */
+    .scroll-arrow {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: rgba(248, 215, 218, 0.8); /* Light pink with opacity */
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 2; /* Ensure it's above other content */
+      animation: bounce 1.5s infinite ease-in-out; /* Bouncing animation */
+    }
+
+    .scroll-arrow i { /* FontAwesome arrow icon */
+      font-size: 20px;
+      color: white;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0); 
       }
-      5% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg); 
-        opacity: 0; 
+      50% {
+        transform: translateX(-50%) translateY(-10px); 
       }
     }
+
+    /* Class to rotate the arrow upwards */
+    .scroll-arrow.up i { 
+      transform: rotate(180deg); 
+    }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="background-container">
-      <div class="background"></div>
-      <div class="leaf-container" id="leaf-container"></div>
-    </div>
+  <div class="background-container">
+    <div class="background"></div>
+    <div class="leaf-container" id="leaf-container"></div>
+  </div>
+
+  <div class="scroll-arrow" id="scroll-arrow">
+    <i class="fas fa-chevron-down"></i> 
+  </div>
+
+
   <div class="section profile" id="about-me">
     <div class="container">
       <img src="pfp.png" alt="roh">
@@ -202,17 +267,19 @@
   </div>
 
   <div class="section projects" id="projects">
-    <div class="container">
-      <h2>projects</h2>
-      <div class="project">
-        <h3>what do you want here</h3>
-        <p>as many as you want</p>
-        <a href="#" target="_blank">Open</a> 
+    <div class="content-container discord-profile"> 
+      <div class="banner-container">
+        <img src="https://cdn.discordapp.com/banners/1224388321464291410/2319a47a673a1336c86889dc626d03e8.webp?size=4096" alt="User Banner" class="banner">
       </div>
-      <div class="project">
-        <h3>another one if you want</h3>
-        <p>sigma</p>
-        <a href="#" target="_blank">Open</a>
+      <div class="profile-info">
+        <img src="https://cdn.discordapp.com/avatars/1224388321464291410/7c713dd3fc0e67399fc517298711eef2.webp" alt="User Avatar" class="avatar">
+        <div class="user-details">
+          <h2 class="username">roh</h2>
+          <p class="bio">VRC Avi Maker ❤️
+            Hop, Step, AND ONE MORE CHANCE!
+             
+            Neo, Boogie, WEIRDCORE ❤️</p>
+        </div>
       </div>
     </div>
   </div>
@@ -233,11 +300,12 @@
             <span class="link-text">X</span>
           </a>
       </div>
-      <a href="https://coopr.tech" class="created-by">created by coopaah</a> <div class="leaf-container" id="leaf-container"></div>
+      <a href="https://coopr.tech" class="created-by">created by coopaah</a> 
     </div>
   </div>
+
   <script>
-    // Falling Leaf JavaScript
+    // Falling Leaf JavaScript 
     const leafContainer = document.getElementById('leaf-container');
     const numberOfLeaves = 20; 
 
@@ -264,10 +332,16 @@
       createLeaf();
     }
 
-    // Page Scrolling JavaScript (No Changes Here)
     const sections = document.querySelectorAll('.section');
     let currentSectionIndex = 0;
     let scrolling = false;
+    const scrollArrow = document.getElementById('scroll-arrow'); 
+
+    scrollArrow.addEventListener('click', () => {
+      if (currentSectionIndex < sections.length - 1) {
+        scrollToSection(currentSectionIndex + 1); 
+      }
+    });
 
     window.addEventListener('wheel', (event) => {
       event.preventDefault(); 
@@ -287,7 +361,7 @@
 
         setTimeout(() => { 
           scrolling = false;
-        }, 800);
+        }, 800); 
       }
     });
 
@@ -296,6 +370,14 @@
         behavior: 'smooth',
         block: 'start' 
       });
+
+      // Update arrow direction
+      if (index === sections.length - 1) {
+        scrollArrow.style.display = 'none'; // Hide on last page
+      } else {
+        scrollArrow.style.display = 'flex';
+        scrollArrow.classList.toggle('up', index > 0); // Point up if not on the first page
+      }
     }
   </script>
 
