@@ -1,4 +1,269 @@
-aklsjflkajsdklfjalksjdklfjalksdjlkfjaslk;djf;lkajsdl hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>roh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Fredoka One', cursive;
+      margin: 0;
+      overflow: hidden;
+      background-color: #f2f2f2;
+    }
 
+    .section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
 
-hi
+    .profile {
+      background-color: rgb(239, 219, 235);
+    }
+
+    .projects {
+      background-color: hsl(295, 37%, 81%);
+    }
+
+    .socials {
+      background-color: #f2d7dd;
+    }
+
+    .container {
+      max-width: 800px;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 0; /* Keep content above leaves */
+    }
+
+    .profile img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .projects .project {
+      background-color: rgb(241, 225, 241);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .projects a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .projects a:hover {
+      text-decoration: underline;
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .link-button {
+      background-color: #f8d7da;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .link-button:hover {
+      background-color: #e7a1aa;
+      transform: translateY(-3px);
+    }
+
+    .link-icon {
+      font-size: 1.2em;
+      margin-right: 8px;
+    }
+
+    /* Gingham Background Pattern */
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background-image: 
+        linear-gradient(45deg, #f2d7dd 25%, transparent 25%, transparent 75%, #f2d7dd 75%),
+        linear-gradient(45deg, #f2d7dd 25%, transparent 25%, transparent 75%, #f2d7dd 75%);
+      background-size: 40px 40px;
+      background-position: 0 0, 20px 20px;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+      z-index: -1; 
+    }
+
+    /* Falling Leaves Container */
+    .leaf-container { 
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none; 
+    }
+
+/* Falling Leaf Styles */
+.falling-leaf {
+    position: absolute;
+    width: 50px; /* Increased width */
+    height: 50px; /* Increased height */
+    background-image: url("https://static.wikia.nocookie.net/roblox/images/5/53/Mythical_Pink_Leaf.png/revision/latest/thumbnail/width/360/height/450?cb=20201001011104");
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: fall linear infinite;
+    opacity: 0;
+}
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0; 
+      }
+      5% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg); 
+        opacity: 0; 
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="leaf-container" id="leaf-container"></div>
+
+  <div class="section profile" id="about-me">
+    <div class="container">
+      <img src="pfp.png" alt="roh">
+      <h1>roh</h1>
+      <p>VRC Avi Maker. Hop, Step, AND ONE MORE CHANCE!</p>
+    </div>
+  </div>
+
+  <div class="section projects" id="projects">
+    <div class="container">
+      <h2>projects</h2>
+      <div class="project">
+        <h3>what do you want here</h3>
+        <p>as many as you want</p>
+        <a href="#" target="_blank">Open</a> 
+      </div>
+      <div class="project">
+        <h3>another one if you want</h3>
+        <p>sigma</p>
+        <a href="#" target="_blank">Open</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section socials" id="socials">
+    <div class="container">
+      <h2>socials</h2>
+      <div class="links">
+        <a href="https://discord.com/users/1224388321464291410" class="link-button">
+          <span class="link-icon">🔗</span>
+          <span class="link-text">Discord</span> </a>
+        <a href="#projects" class="link-button">
+          <span class="link-icon">📷</span>
+          <span class="link-text">Projects</span>
+        </a>
+        <a href="#socials" class="link-button">
+          <span class="link-icon">📷</span>
+          <span class="link-text">other socials here if you want</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Falling Leaf JavaScript
+    const leafContainer = document.getElementById('leaf-container');
+    const numberOfLeaves = 20; 
+
+    function getRandom(min, max) { 
+      return Math.random() * (max - min) + min;
+    }
+
+    function createLeaf() {
+      const leaf = document.createElement('div');
+      leaf.classList.add('falling-leaf');
+
+      const size = getRandom(10, 30); 
+      leaf.style.width = size + 'px';
+      leaf.style.height = size + 'px';
+
+      leaf.style.left = getRandom(0, 100) + '%'; 
+      leaf.style.animationDuration = getRandom(5, 10) + 's'; 
+      leaf.style.animationDelay = getRandom(0, 5) + 's'; 
+
+      leafContainer.appendChild(leaf);
+    }
+
+    for (let i = 0; i < numberOfLeaves; i++) {
+      createLeaf();
+    }
+
+    // Page Scrolling JavaScript (No Changes Here)
+    const sections = document.querySelectorAll('.section');
+    let currentSectionIndex = 0;
+    let scrolling = false;
+
+    window.addEventListener('wheel', (event) => {
+      event.preventDefault(); 
+
+      if (!scrolling) { 
+        scrolling = true;
+
+        const deltaY = event.deltaY; 
+
+        if (deltaY > 0 && currentSectionIndex < sections.length - 1) {
+          currentSectionIndex++;
+        } else if (deltaY < 0 && currentSectionIndex > 0) {
+          currentSectionIndex--; 
+        }
+
+        scrollToSection(currentSectionIndex);
+
+        setTimeout(() => { 
+          scrolling = false;
+        }, 800);
+      }
+    });
+
+    function scrollToSection(index) {
+      sections[index].scrollIntoView({
+        behavior: 'smooth',
+        block: 'start' 
+      });
+    }
+  </script>
+</body>
+</html>
